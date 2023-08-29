@@ -6,7 +6,11 @@
 	<title>Document</title>
 
 	<link rel="stylesheet" href="./style.css">
+	<!-- Import the list generation & item deletion logic: -->
 	<script src="./script.js"></script>
+	<!-- Import the CSS theme control logic: -->
+	<script src="./themeControl.js"></script>
+
 </head>
 <body>
 
@@ -18,11 +22,25 @@
 	<h2>Favourite Media</h2>
 	<ul id="mediaList" class="bananas">
 
+
 	</ul>
+
+	<button onclick="changeCSSTheme('dark')">
+		Change theme to dark
+	</button>
+
+	<button onclick="changeCSSTheme('light')">
+		Change theme to light
+	</button>
+
+	<button onclick="toggleLightDark()">
+		Toggle light/dark
+	</button>
 
 	<script>
 		exampleHello();
 		createListOfMedia();
+		changeCSSTheme("dark");
 	</script>
 </body>
 </html>
