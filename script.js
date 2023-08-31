@@ -60,7 +60,13 @@ function removeItemFromList(targetItem){
 		//targetItemNode.parentNode.removeChild(targetItemNode);
 
 		// Modify the array
-		favouriteMedia = favouriteMedia.filter(item => item !== targetItem);
+		favouriteMedia = favouriteMedia.filter(item => {
+			if (!item || item == "" || item !== targetItem) {
+				return true;
+			} else {
+				return false
+			}
+		});
 
 		// Regenerate the visuals
 		createListOfMedia();
@@ -75,12 +81,17 @@ function addItemToList(event){
 
 	let realInputField = document.getElementById("real-nameinput");
 	let newItemName = realInputField.value;
-	console.log("newItemName is: " + newItemName);
-	// add item to list
-	favouriteMedia.push(newItemName);
-
-	// generate a new list 
-	createListOfMedia();
+	if (newItemName){
+		console.log("newItemName is: " + newItemName);
+		// add item to list
+		favouriteMedia.push(newItemName);
+	
+		// generate a new list 
+		createListOfMedia();
+	} else {
+		console.warn("Attempted to add an empty item to the list");
+	}
+	
 
 }
 
