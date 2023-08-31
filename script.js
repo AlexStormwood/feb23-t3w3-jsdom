@@ -75,11 +75,11 @@ function removeItemFromList(targetItem){
 }
 
 
-function addItemToList(event){
+function addItemToList(event, targetId){
 	event.preventDefault();
 	console.log("we tried to add an item to the list!");
 
-	let realInputField = document.getElementById("real-nameinput");
+	let realInputField = document.getElementById(targetId);
 	let newItemName = realInputField.value;
 	if (newItemName){
 		console.log("newItemName is: " + newItemName);
@@ -96,8 +96,8 @@ function addItemToList(event){
 
 }
 
-let realFormSubmitButton = document.getElementById("real-formsubmit");
-realFormSubmitButton.addEventListener("click", addItemToList);
+// let realFormSubmitButton = document.getElementById("real-formsubmit");
+// realFormSubmitButton.addEventListener("click", (event) => {addItemToList(event, "real-nameinput")});
 // functionName() runs immediately, do not want!!
 // realFormSubmitButton.addEventListener("click", addItemToList());
 
@@ -125,3 +125,7 @@ let pseudoFormTextInput = document.getElementById("pseudo-nameinput");
 pseudoFormTextInput.addEventListener("focusin", () => {inputHelperOnFocus("pseudo-texthint")});
 pseudoFormTextInput.addEventListener("focusout", () => {inputHelperOnBlur("pseudo-texthint")});
 inputHelperOnBlur("pseudo-texthint");
+
+
+let pseudoFormButton = document.getElementById("pseudo-formsubmit");
+pseudoFormButton.addEventListener("click", (event) => {addItemToList(event, "pseudo-nameinput")});
