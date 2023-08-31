@@ -90,6 +90,7 @@ function addItemToList(event){
 		createListOfMedia();
 	} else {
 		console.warn("Attempted to add an empty item to the list");
+		console.error("Example error");
 	}
 	
 
