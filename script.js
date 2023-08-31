@@ -21,6 +21,10 @@ function exampleHello(){
 function createListOfMedia(){
 
 	let rootUlNode = document.querySelector("ul");
+
+	rootUlNode.innerHTML = "";
+
+
 	// let exampleNode = document.getElementsByClassName("bananas")[0];
 	// let exampleNode = document.getElementById("mediaList");
 
@@ -53,6 +57,34 @@ function createListOfMedia(){
 function removeItemFromList(targetItem){
 	let targetItemNode = document.getElementById(targetItem);
 	if (targetItemNode){
-		targetItemNode.parentNode.removeChild(targetItemNode);
+		//targetItemNode.parentNode.removeChild(targetItemNode);
+
+		// Modify the array
+		favouriteMedia = favouriteMedia.filter(item => item !== targetItem);
+
+		// Regenerate the visuals
+		createListOfMedia();
+
 	}
 }
+
+
+function addItemToList(event){
+	event.preventDefault();
+	console.log("we tried to add an item to the list!");
+
+	let realInputField = document.getElementById("real-nameinput");
+	let newItemName = realInputField.value;
+	console.log("newItemName is: " + newItemName);
+	// add item to list
+	favouriteMedia.push(newItemName);
+
+	// generate a new list 
+	createListOfMedia();
+
+}
+
+let realFormSubmitButton = document.getElementById("real-formsubmit");
+realFormSubmitButton.addEventListener("click", addItemToList);
+// functionName() runs immediately, do not want!!
+// realFormSubmitButton.addEventListener("click", addItemToList());
